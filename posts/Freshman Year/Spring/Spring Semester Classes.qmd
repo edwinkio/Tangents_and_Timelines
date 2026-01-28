@@ -1,0 +1,45 @@
+---
+title: "Spring Semester Classes"
+author: "Edwin Kodji"
+date: "2026-1-16"
+categories: [Freshman Year, Spring]
+image: "preview.jpg"
+---
+
+![](Classes.png)
+
+My upcoming classes.
+
+# Schedule
+
+I'll be taking the following classes this upcoming semester:
+
+-   CISC210 (Intro to Systems Programming)
+
+-   CPEG202 (Intro to Digital Systems)
+
+-   ELEG305 (Signals and Systems)
+
+-   HONR290 (Honors Colloqium - Art of Interpretation)
+
+-   MATH351 (Engineering Mathematics 1)
+
+-   PHYS227 (Fundamentals of Physics Lab 1)
+
+-   PHYS228 (Fundamentals of Physics Lab 2)
+
+# Why?
+
+One might ask why I'm taking 7 classes next semester. Well, it's really only five, but the two labs just make it seem like a lot. Also, by doing this, I may be able to graduate a full year early.
+
+I'm still not too sure what I would really like to do in the future (at least, career wise), so taking these classes will give me options in my final few semesters. That's my logic at least.
+
+I will definitely have to cut down my hours at work. Maybe I'll only work for four hours during the weekends. That should be sustainable, but I have to curb my procrastination.
+
+# Rant
+
+Textbooks and supplies are so expensive. Why do I have to pay over \$200 for a math textbook? And then for CPEG202, there's an FGPA board that costs like a hundred dollars. I regret not buying it on Black Friday. It was so much cheaper.
+
+The ELEG305 textbook costs around \$50, but I managed to get it for free through the publisher's website.
+
+I haven't even mentioned the HONR290 class' book costs. College is expensive.

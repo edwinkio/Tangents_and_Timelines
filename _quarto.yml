@@ -1,0 +1,29 @@
+project:
+  type: website
+
+website:
+  description: "Tracking hectic weeks and documenting drifting thoughts. A blog built with Quarto"
+  title: "Tangents and Timlines"
+  google-analytics: "G-G4BJZ46YZF"
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/edwinkio
+  open-graph: true
+format:
+  html:
+    theme: lux
+    respect-user-color-scheme: true
+comments:
+  giscus:
+    repo:
+      edwinkio/Tangents-and-Timelines
+theme:
+  light: lux
+  dark: darkly
+editor: 
+  render-on-save: true
+
+
+

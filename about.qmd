@@ -1,0 +1,23 @@
+---
+title: "About"
+image: profile.png
+about:
+  template: trestles
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com
+    - icon: github
+      text: Github
+      href: https://github.com
+---
+
+About me!
+
+## Education
+
+University of Delaware, Newark \| Newark, DE
+
+Bachelor of Science in Electrical Engineering \| Aug 2025 - Present
+
+***I'm still working on this!***
