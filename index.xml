@@ -9,8 +9,8 @@
 <link>https://edwinkio.github.io/Tangents_and_Timelines/</link>
 <atom:link href="https://edwinkio.github.io/Tangents_and_Timelines/index.xml" rel="self" type="application/rss+xml"/>
 <description>Tracking hectic weeks and documenting drifting thoughts. A blog built with Quarto</description>
-<generator>quarto-1.8.26</generator>
-<lastBuildDate>Fri, 16 Jan 2026 05:00:00 GMT</lastBuildDate>
+<generator>quarto-1.8.27</generator>
+<lastBuildDate>Fri, 16 Jan 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Spring Semester Classes</title>
   <dc:creator>Edwin Kodji</dc:creator>
@@ -46,7 +46,7 @@
   <category>Freshman Year</category>
   <category>Spring</category>
   <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Spring Semester Classes.html</guid>
-  <pubDate>Fri, 16 Jan 2026 05:00:00 GMT</pubDate>
+  <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/preview.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -151,7 +151,7 @@
   <category>Freshman Year</category>
   <category>Fall</category>
   <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Fall/Fall_Reflection.html</guid>
-  <pubDate>Mon, 15 Dec 2025 05:00:00 GMT</pubDate>
+  <pubDate>Mon, 15 Dec 2025 00:00:00 GMT</pubDate>
   <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Fall/Arches.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -190,7 +190,7 @@
   <category>Freshman Year</category>
   <category>Fall</category>
   <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Fall/Hackathon.html</guid>
-  <pubDate>Sat, 06 Dec 2025 05:00:00 GMT</pubDate>
+  <pubDate>Sat, 06 Dec 2025 00:00:00 GMT</pubDate>
   <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Fall/hackathon.png" medium="image" type="image/png" height="81" width="144"/>
 </item>
 </channel>
