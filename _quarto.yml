@@ -3,6 +3,7 @@ project:
 
 website:
   description: "Tracking hectic weeks and documenting drifting thoughts. A blog built with Quarto"
+  site-url: https://edwinkio.github.io/Tangents_and_Timelines/
   title: "Tangents and Timlines"
   google-analytics: "G-G4BJZ46YZF"
   navbar:
@@ -18,7 +19,7 @@ format:
 comments:
   giscus:
     repo:
-      edwinkio/Tangents-and-Timelines
+      edwinkio/Tangents_and_Timelines
 theme:
   light: lux
   dark: darkly

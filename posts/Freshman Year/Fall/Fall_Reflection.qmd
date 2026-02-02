@@ -2,7 +2,7 @@
 title: "First Semester UD Courses Review"
 author: "Edwin Kodji"
 date: "2025-12-15"
-date-modified: "2026-1-16"
+date-modified: "2026-1-28"
 categories: [Freshman Year, Fall]
 number-sections: true
 image: "Arches.jpg"
@@ -12,7 +12,7 @@ How did my first semester go?
 
 ## Overview
 
-First year engineering students have common fall semester courses, but since I'm in honors and I had Calculus BC credit, my coursework varied slightly. For this post, I'll just be detailing my experiences with the classes I had in my first semester.
+First year engineering students have common fall semester courses. For this post, I'll just be detailing my experiences with the classes I had in my first semester.
 
 ::: {.alert .alert-block .alert-info}
 Note: Originally, this was supposed to be posted on December 15th, 2025, but I'm incredibly lazy and it's over a month later that I'm now posting this...
@@ -36,9 +36,11 @@ I also worked as a Cashier on weekends, so that reduced the amount of time I cou
 
 Your grade in this class is solely tied to four exams, each with equal weight (100 points). Your highest score is doubled, however, so there is a total of 500 points you can earn in this class. It's honestly so easy to pass this class. Getting a 50 on every exam would net you a C-...
 
-My grades on the exams in chronological order are: 88, 84, 78, and... a 60. Yes, I failed the final exam. I only needed a %4 on the final to pass with a B, and since it was impossible for me to get an A, you can imagine how much effort I actually put into studying.
+My grades on the exams in chronological order are: 88, 84, 78, and... a 60. Yes, I failed the final exam. A lot of people got an A, however. I only needed a %4 on the final to pass with a B, and since it was impossible for me to get an A, you can imagine how much effort I actually put into studying.
 
-I should mention that the class average was a 91.5%, with the *MODE* being 96%. I wonder why that is? This reddit post goes into a little more detail: <https://www.reddit.com/r/udel/comments/1p5ifkd/mass_cheating_general_chemistry/>
+With the class average being a 91.5, I honestly think may have used *other* tools while taking the test. The test was online with no supervision...
+
+If you're interested, here's a reddit discussion on this: <https://www.reddit.com/r/udel/comments/1p5ifkd/mass_cheating_general_chemistry/>
 
 ## CHEM133 (A-) {#sec-chem133}
 

@@ -1,6 +1,5 @@
 ---
 title: "About"
-image: profile.png
 about:
   template: trestles
   links:
@@ -9,7 +8,7 @@ about:
       href: https://linkedin.com
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/edwinkio
 ---
 
 About me!
