@@ -9,7 +9,7 @@
 <meta name="author" content="Edwin Kodji">
 <meta name="dcterms.date" content="2026-01-16">
 
-<title>Spring Semester Classes – Tangents and Timelines</title>
+<title>How to use C++ with Jupyter Notebook in VS Code (Windows) – Tangents and Timelines</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,6 +24,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -103,10 +138,12 @@ cookieconsent.run({
   
 
 
-<meta property="og:title" content="Spring Semester Classes – Tangents and Timelines">
+<meta property="og:title" content="How to use C++ with Jupyter Notebook in VS Code (Windows) – Tangents and Timelines">
 <meta property="og:description" content="Documenting drifting thoughts, experiences with my classes, as well as any random projects I may be working on. A blog built with Quarto.">
-<meta property="og:image" content="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/preview.jpg">
+<meta property="og:image" content="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/ckernel.png">
 <meta property="og:site_name" content="Tangents and Timelines">
+<meta property="og:image:height" content="683">
+<meta property="og:image:width" content="1919">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -151,10 +188,9 @@ cookieconsent.run({
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Spring Semester Classes</h1>
+      <h1 class="title">How to use C++ with Jupyter Notebook in VS Code (Windows)</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Freshman Year</div>
-                <div class="quarto-category">Spring</div>
+                <div class="quarto-category">Tutorial</div>
               </div>
                   </div>
   </div>
@@ -176,6 +212,12 @@ cookieconsent.run({
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">June 8, 2026</p>
+      </div>
+    </div>
       
     </div>
     
@@ -191,23 +233,56 @@ cookieconsent.run({
 
 
 
-<p><img src="Classes.png" class="img-fluid"></p>
-<p>My upcoming classes.</p>
-<section id="schedule" class="level1">
-<h1>Schedule</h1>
-<p>I’ll be taking the following classes this upcoming semester:</p>
+<p>C++ kernel for Jupyer Notebook (VS Code).</p>
+<p>I tried following <a href="https://creme332.github.io/posts/install-cpp-notebook/">creme’s</a> blog, but I found it to be outdated. This install uses miniforge3 instead of mambaforge, as it’s deprecated. The process for using the C++ kernel is also a little different.</p>
+<p>To start, you will need the following:</p>
 <ul>
-<li><p>CISC210 (Intro to Systems Programming)</p></li>
-<li><p>CPEG202 (Intro to Digital Systems)</p></li>
-<li><p>ELEG305 (Signals and Systems)</p></li>
-<li><p>HONR290 (Honors Colloqium - Art of Interpretation)</p></li>
-<li><p>MATH351 (Engineering Mathematics 1)</p></li>
-<li><p>PHYS227 (Fundamentals of Physics Lab 1)</p></li>
-<li><p>PHYS228 (Fundamentals of Physics Lab 2)</p></li>
+<li>WSL (if using Windows)</li>
+<li>VS Code</li>
+<li>miniforge3</li>
 </ul>
-<p>One might ask why I’m taking 7 classes next semester. Well, it’s really only five, but the two labs just make it seem like a lot. Also, by doing this, I may be able to graduate a full year early.</p>
-<p>I’m still not too sure what I would really like to do in the future (at least, career wise), so taking these classes will give me options in my final few semesters (either a masters degree, or a co-op). That’s my logic at least.</p>
-<p>I will definitely have to cut down my hours at work. Maybe I’ll only work for four hours during the weekends. That should be sustainable, but I still do have to curb my procrastination.</p>
+<section id="download-the-miniforge3-installer" class="level2">
+<h2 class="anchored" data-anchor-id="download-the-miniforge3-installer">Download the miniforge3 installer</h2>
+<p>On the <a href="https://github.com/conda-forge/miniforge/releases">miniforge</a> release page, download the file ending in ‘Linux-x86_64.sh’ into the root directory of your terminal.</p>
+<p>Then run the following command to install miniforge3:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sh</span> ./Miniforge3-Linux-x86_64.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Replace ‘Miniforge3-Linux-x86_64.sh’ with your downloaded file. Press ‘q’ to skip the license and follow the rest of the instructions.</p>
+<p>Reload your terminal and to verify the installation, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> <span class="at">--version</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You should see a folder called ‘miniforge3’ now.</p>
+</section>
+<section id="install-xeus-cling" class="level2">
+<h2 class="anchored" data-anchor-id="install-xeus-cling">Install xeus-cling</h2>
+<p>xeus-cling (a Jupyter kernel for C/C++) isn’t available on Windows (hence the reason WSL is needed), so in order to install it, run these three commands:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-n</span> cling</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> activate cling</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install xeus-cling <span class="at">-c</span> conda-forge</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you want to install it from source, follow the instructions <a href="https://github.com/jupyter-xeus/xeus-cling#installation-from-source">here</a></p>
+<p><strong>You can deactivate the environement by running:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="install-jupyterlab" class="level2">
+<h2 class="anchored" data-anchor-id="install-jupyterlab">Install Jupyterlab</h2>
+<p>The last step is to install Jupyterlab via:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install jupyterlab <span class="at">-c</span> conda-forge</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="c-kernel-for-vs-code" class="level2">
+<h2 class="anchored" data-anchor-id="c-kernel-for-vs-code">C++ Kernel for VS Code</h2>
+<p>Again, following creme’s instructions, install the following extensions:</p>
+<ul>
+<li>Jupyter by Microsoft</li>
+<li>Jupyter Keymap by Microsoft</li>
+<li>Jupyter Cell Tags by Microsoft</li>
+<li>Jupyter Notebook Renderers by Microsoft</li>
+</ul>
+<p>Following his instructions for the environment didn’t work for me, so I had to work around it. First, create a file with the ipynb extension and with the cling environment active, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> server password</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Enter your password twice, then after it has been hashed, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Your server should come online, but look for the ‘localhost’ url. Copy that to your clipboard and in VS Code, click on ‘select kernel’.</p>
+<p>I didn’t see a C++ kernel, and if you don’t, click ‘select another kernel’ and then click ‘existing jupyter server’. Paste in your link and enter your password. You now have the C++ kernel!</p>
+<p>If you found any problems, please let me know, but I hope this is helpful for anyone trying to create C/C++ notebooks in VS Code.</p>
 
 
 </section>

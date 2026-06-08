@@ -5,12 +5,270 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>Tangents and Timlines</title>
+<title>Tangents and Timelines</title>
 <link>https://edwinkio.github.io/Tangents_and_Timelines/</link>
 <atom:link href="https://edwinkio.github.io/Tangents_and_Timelines/index.xml" rel="self" type="application/rss+xml"/>
-<description>Tracking hectic weeks and documenting drifting thoughts. A blog built with Quarto</description>
-<generator>quarto-1.8.27</generator>
-<lastBuildDate>Fri, 16 Jan 2026 00:00:00 GMT</lastBuildDate>
+<description>Documenting drifting thoughts, experiences with my classes, as well as any random projects I may be working on. A blog built with Quarto.</description>
+<generator>quarto-1.9.38</generator>
+<lastBuildDate>Sun, 31 May 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Second Semester UD Courses Review</title>
+  <dc:creator>Edwin Kodji</dc:creator>
+  <link>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Spring_Reflection.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>A little recap of my second semester classes.</p>
+<section id="overview" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="overview"><span class="header-section-number">1</span> Overview</h2>
+<p>Taking 7 classes (of which 2 were labs) wasn’t a fun experience, but I somehow made it work. This post will follow the same format as last semester’s review (<a href="../../../posts/Freshman Year/Fall/Fall_Reflection.html">Fall Reflection</a>).</p>
+<p>Section&nbsp;2 Section&nbsp;3 Section&nbsp;4 Section&nbsp;5 Section&nbsp;6 Section&nbsp;7 Section&nbsp;8</p>
+</section>
+<section id="sec-cisc210" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="sec-cisc210"><span class="header-section-number">2</span> CISC210 (A)</h2>
+<p>Course Title: Introduction to Systems Programming</p>
+<p>Professor: Nazim Karaca</p>
+<p>Rating: 9/10</p>
+<p>This class went over the history of Unix and Linux development, the basics of the Linux command line, and provided an overview of the C programming language. We were also provided an introduction to embedded systems programming with a Raspberry Pi, which I found really interesting. This class is really similar to CISC106 in terms of how we were taught.</p>
+<p>There are usually a few Perusall readings you have to do every week. Some of them can be very lengthy, so it’s a good idea to start on them early. Additionally, there are quizzes on Moodle which are helpful and prepare you for the exams. The projects on the Pi can be really time consuming, so again, it’s a good idea to start on them early. Sometimes, you can get extra credit for doing the projects early too!</p>
+<p>I overall liked this class. C was a little hard to get used to, however. In a high level language like python, a lot about how computers work (memory, data management, etc) is hidden away from you, but C forces you to actually know what you’re doing. The projects were also really fun to work on. Again, I didn’t really like the format, as we had to learn a lot ourselves, but my professor and the TA were really helpful whenever I didn’t understand something.</p>
+</section>
+<section id="sec-cpeg202" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="sec-cpeg202"><span class="header-section-number">3</span> CPEG202 (A-)</h2>
+<p>Course Title: Introduction to Digital Systems</p>
+<p>Professor: Thomas Lum</p>
+<p>Rating: 4/10</p>
+<p>This class goes over the underlying principles of how computers work. We went over topics like CMOS circuits, logic gates, boolean algebra, combinatorial &amp; arithmetic logic circuits, and VHDL programming. We had weekly labs, but two of your lowest scoring labs could be dropped, which was really nice. We also had weekly readings on Zybook that are really helpful. Note that while not required for purchase, the Arty S7-25 board is helpful to have for labs, since the last few labs are really time consuming.</p>
+<p>I disliked this class. Our professor went really fast through slides and I’d sometimes leave class more confused than I was coming in. I remember being so flustered during the latter few weeks of class because I could barely understand the professor. VHDL is also really difficult to program in, so it took quite a bit of time to get through the labs. The Zybooks made learning the concepts a lot easier though, so I’d recommend slowing down to really read them.</p>
+</section>
+<section id="sec-eleg305" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="sec-eleg305"><span class="header-section-number">4</span> ELEG305 (A-)</h2>
+<p>Course Title: Signals and Systems</p>
+<p>Professor: Austin Brockmeier</p>
+<p>Rating: 7/10</p>
+<p>ELEG305 provides an introduction to the analysis of well, signals and systems. We went over basic signal transformations, linear time invariant systems, continuous and discrete time systems, convolutions, the Fourier series and transforms, and so much more. We had weekly homework problem sets, as well as computer assignments to help us solidify our understanding.</p>
+<p>This class was hard. Looking back at it, the content wasn’t all that difficult, but being introduced to all of these concepts without a background in Linear Algebra or Differential Equations made things really overwhelming. This class is basically a combination of those two classes. The second exam for this class was brutal. I somehow got a 63, but the class average was ~47 from what I overheard. I think that its best to take a look at the assigned reading for the week before going to class. I found myself doing a lot better once I first exposed myself to the material beforehand.</p>
+<p>I was in the Honors section of this class, so I had to do a research project as well. I worked on a voice isolation project. Essentially, I explored methods of identifying a human voice in the presence of noise. I explored Spectral Subtraction and Independent Component Analysis (ICA). ICA was really difficult to learn about since I didn’t have the requisite mathematical knowledge, but I still got the general idea of how it works. I was able to impelment Spectral Subtraction however, and I plan on making a blog post about it soon.</p>
+</section>
+<section id="sec-honr290" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="sec-honr290"><span class="header-section-number">5</span> HONR290 (A)</h2>
+<p>Course Title: The Art of Interpretation</p>
+<p>Professor: Richard Hanley</p>
+<p>Rating: 9/10</p>
+<p>Would you interpret fiction the same way you’d understand the law? How about scripture? What are ways that one would go about intepreting media in those domains? This class answered some of those questions and more. I didn’t think that this class would be Philosophy based, but well, it was. We went over textualism and other methods of interpreting law. The we looked at various critical theories that help us understand fiction before finally moving to the interpretation of scripture.</p>
+<p>I liked this class. It made me think about things that I otherwise would not. It really helped illustrate how the world isn’t black or white, which I really appreciated. I’d recommend this class!</p>
+</section>
+<section id="sec-math351" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="sec-math351"><span class="header-section-number">6</span> MATH351 (A)</h2>
+<p>Course Title: Engineering Mathematics 1</p>
+<p>Professor: Morgan Schreffler</p>
+<p>Rating: 8/10</p>
+<p>This class was a mix of introductory Differential Equations and Linear Algebra. We went over initial value problems, linear ODE’s, Gaussian elimination, matrix algebra, vector spaces (and subspaces), eigenvalues, coupled linear ODE’s, and more. There are weekly homework assignments with extra credit avaliable, as well as 3 exams (one being the final). The lowest of your two midterms is weighted less, which is really helpful.</p>
+<p>I found this class really interesting and I didn’t find it all that difficult. Contrary to Professor Schreffler’s RMP ratings, I found him a great teacher. I was hardly ever lost and I think he did a really good job of explaining the concepts to us. I don’t think other people found him helpful because towards the end of the semester only 15 or so people were showing up out of 40. He seemed really down about that, but we had great discussions with those who did show up.</p>
+</section>
+<section id="sec-phys227" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="sec-phys227"><span class="header-section-number">7</span> PHYS227 (B+)</h2>
+<p>Course Title: Fundamentals of Physics Lab 1</p>
+<p>Professor: Class led by TA</p>
+<p>Rating: 9/10</p>
+<p>This lab gave us experiments based on the material in PHYS206. The labs weren’t all that difficult but the lab reports were a pain. There’s really not much to say about this lab. I remember getting a +- value of 50,000, which <em>definitely</em> wasn’t intended, but the lab as a whole was a lot better than the chemistry lab I had first semester, however.</p>
+</section>
+<section id="sec-phys228" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="sec-phys228"><span class="header-section-number">8</span> PHYS228 (B+)</h2>
+<p>Course Title: Fundamentals of Physics Lab 2</p>
+<p>Professor: Class led by TA</p>
+<p>Rating: 7/10</p>
+<p>This lab was definitely a lot harder than PHYS227. The lab manual was very confusing at times and sometimes, it gave us the wrong instructions. Our TA was really knowledgeable however, so things weren’t too difficult. It would’ve been helpful to have had PHYS208 alongside this class, but I’d rather not take Physics 2 again.</p>
+<hr>
+<p>End of the post! My second semester went better than I was expecting. It was a struggle in the beginning, especially since I was working at Walmart part time, but I’m glad I got through it. I plan to get an on campus research job next semester, so hopefully that’s more enjoyable. Thanks for reading!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Freshman Year</category>
+  <category>Spring</category>
+  <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Spring_Reflection.html</guid>
+  <pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/spring_reflection.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Week 1 - School Blues</title>
+  <dc:creator>Edwin Kodji</dc:creator>
+  <link>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Week 1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>A recap of the first week of my second semester.</p>
+<section id="monday" class="level2">
+<h2 class="anchored" data-anchor-id="monday">Monday</h2>
+<p>I was really nervous before my first class. I had a really bad stomach ache, but it eventually went away. It happens every morning before school, and it’s really annoying, but i have to bear with it.</p>
+<p>My first class was ELEG305 and I feel super under prepared for it. I’m actually not really supposed to be taking it (it’s a sophomore class, and it had a prerequisite before this year), but I plan on graduating in 3 years. We’ll see how it goes though. The content seems really interesting, but I hope it isn’t too difficult.</p>
+<p>After the class, I went to pick up my brother from school.<sup>1</sup></p>
+<p>I had breakfast at 12 (unhealthy, I know), and then I worked on an assignment for CISC210.</p>
+<p>I then had my Honors Colloquium course, which seems really interesting! The professor seems really nice, although he’s rather unfiltered in his language.</p>
+</section>
+<section id="tuesday" class="level2">
+<h2 class="anchored" data-anchor-id="tuesday">Tuesday</h2>
+<p>It was super cold today. After dropping off my brother, I went to Gore Hall and stayed there for around three hours working on a few assignments. I saw a some friends passing through there (Raima, Ellie, and Blessed)!</p>
+<p>I spent an awful amount of time trying to install a Jupyter Notebook with a C++ kernel (I’ll be using this for notes), and it took a while, but it finally worked.</p>
+<p>Then I had my Systems Programming class. I have professor Nazim from my CS1 class again, so that’s nice to see. We just went over the Syllabus and talked about some random things.</p>
+<p>Apparently, the labs are optional, so I’ll likely won’t show up to any of them. I went with Joshua and Ryan, and there were only 5 or so people there when we showed up. I guess professor Nazim shouldn’t have said that the labs are optional…</p>
+<p>I went to the library and read ‘A Good Man is Hard to Find’ for my honors colloquium, and I’ll have a whole separate post (link post) detailing my thoughts toward it. Spoiler warning: my interpretation is quite deranged, but it’s all I have and I think I have a pretty good argument for it.</p>
+<p>I then had my Engineering Math class, and I think I’ll like this class as well. The professor is in a way, brimming with energy, and he’s really passionate about math. We learned about the classification of differential equations towards the end of the class.</p>
+<p>Finally, it was time for my Digital Systems class. I’m not very sure what to think about it yet, partly because I was busy figuring out how I would organize my notes for my classes. I still haven’t really decided.</p>
+<p>Anyways, there wasn’t much to today. I saw a few old friends from high school, and I rode the bus with Avneet towards the parking spaces. He mentioned the Winter Fellows program he took part of, which i found really interesting. Maybe I’ll apply for the Summer Fellows program if I can.</p>
+</section>
+<section id="wednesday" class="level2">
+<h2 class="anchored" data-anchor-id="wednesday">Wednesday</h2>
+<p>I feel even more unprepared for my Signals and Systems class. I’ve found that the way Dr.&nbsp;Brockmeier teaches the class is far from my liking. To me, he seems to be introducing concepts as he likes and it doesn’t feel structured at all. I think I might just read the book because I left class more confused, and we’re just starting!</p>
+<p>After class, I stayed in my car for a while rewriting notes. Things make SO much more sense now.</p>
+<p>My physics lab isn’t starting until next week, so I don’t have to worry about that for now.</p>
+<p>After picking up my brother from school, I went home and came back to campus around 2:30. My colloquium class was really interesting today! Unfortunately, we didn’t discuss <em>our</em> interpretation of the reading, but we had some very interesting conversations about who’s actually right when it comes to interpreting a text: the author, or the reader? In my opinion, authors and readers can interpret a text incorrectly. So then what decides the meaning of a text?</p>
+<p>His view is that the words themselves is what matters. The meaning of a text doesn’t change with time or the condition of society.</p>
+<p>I agree with his view, and I wonder where this class is going to go. We have been assigned 46 pages to read, and that might not sound like a lot, but we’ll be discussing on Friday and I haven’t started reading yet…</p>
+<p>I’ve gotta get to reading then.</p>
+</section>
+<section id="thursday" class="level2">
+<h2 class="anchored" data-anchor-id="thursday">Thursday</h2>
+<p>I’ve barely read the book and it’s due tomorrow… how annoying. I really didn’t feel up to doing anything at all today.</p>
+<p>My Systems Programming class was really boring. I wonder if it’ll be anything like CS1. Honestly, we didn’t really do much of anything. I just have to give it time, I guess. it’s only the second day after all.</p>
+<p>Afterwards I spent a little time reading and then I had my math class. I was really lost today. I didn’t really understand Dr.&nbsp;Schreffler when he started talking about singular solutions of ODE’s and Existence &amp; Uniqueness. Everyone else seemed to grasp things just fine, however.</p>
+<p>He seems to just introduce things out of nowhere, providing no sort of motivation. Maybe it’s just me though.</p>
+<p>I then had my Digital Systems class. Things were slightly better, but I felt as if the professor was going through the slides rather quickly. I felt really slow.</p>
+<p>I know I’m not very smart, but these classes are suddenly so overwhelming to me.</p>
+<p>Things really aren’t going so well, and it’s going to be really hard to catch up.</p>
+</section>
+<section id="friday" class="level2">
+<h2 class="anchored" data-anchor-id="friday">Friday</h2>
+<p>My ELEG305 discussion went well today. I actually understood the problems, but then again, they were fairly basic. We started the homework, which I’m really thankful for because I haven’t started it myself.</p>
+<p>I then had a giant 4 hour block. I went home to eat and finish reading my assigned reading. It turns out that we didn’t really have to read all of it, but we still had a fairly interesting dicussion. I missed a few points Scalia (the author) nade, probably because I didn’t take notes. I might have to reread it, since it seems like we’ll be spending a while studying his points in depth.</p>
+<p>I haven’t really done much today. I should probably get some work done, but I am so lazy.</p>
+</section>
+<section id="note" class="level2">
+<h2 class="anchored" data-anchor-id="note">Note</h2>
+<p>I probably won’t continue with weekly posts like this. I already have a private diary to maintain, so if anything, this will feel like an extra chore.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>His school is only 5 minutes or so away, so it’s really convenient.↩︎</p></li>
+</ol>
+</section></div> ]]></description>
+  <category>Freshman Year</category>
+  <category>Spring</category>
+  <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Week 1.html</guid>
+  <pubDate>Mon, 09 Feb 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/week1.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>How to use C++ with Jupyter Notebook in VS Code (Windows)</title>
+  <dc:creator>Edwin Kodji</dc:creator>
+  <link>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/VSCode for C.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>C++ kernel for Jupyer Notebook (VS Code).</p>
+<p>I tried following <a href="https://creme332.github.io/posts/install-cpp-notebook/">creme’s</a> blog, but I found it to be outdated. This install uses miniforge3 instead of mambaforge, as it’s deprecated. The process for using the C++ kernel is also a little different.</p>
+<p>To start, you will need the following:</p>
+<ul>
+<li>WSL (if using Windows)</li>
+<li>VS Code</li>
+<li>miniforge3</li>
+</ul>
+<section id="download-the-miniforge3-installer" class="level2">
+<h2 class="anchored" data-anchor-id="download-the-miniforge3-installer">Download the miniforge3 installer</h2>
+<p>On the <a href="https://github.com/conda-forge/miniforge/releases">miniforge</a> release page, download the file ending in ‘Linux-x86_64.sh’ into the root directory of your terminal.</p>
+<p>Then run the following command to install miniforge3:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sh</span> ./Miniforge3-Linux-x86_64.sh</span></code></pre></div></div>
+<p>Replace ‘Miniforge3-Linux-x86_64.sh’ with your downloaded file. Press ‘q’ to skip the license and follow the rest of the instructions.</p>
+<p>Reload your terminal and to verify the installation, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">mamba</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--version</span> </span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ls</span></span></code></pre></div></div>
+<p>You should see a folder called ‘miniforge3’ now.</p>
+</section>
+<section id="install-xeus-cling" class="level2">
+<h2 class="anchored" data-anchor-id="install-xeus-cling">Install xeus-cling</h2>
+<p>xeus-cling (a Jupyter kernel for C/C++) isn’t available on Windows (hence the reason WSL is needed), so in order to install it, run these three commands:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">mamba</span> create <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-n</span> cling</span>
+<span id="cb3-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">source</span> activate cling</span>
+<span id="cb3-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">mamba</span> install xeus-cling <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> conda-forge</span></code></pre></div></div>
+<p>If you want to install it from source, follow the instructions <a href="https://github.com/jupyter-xeus/xeus-cling#installation-from-source">here</a></p>
+<p><strong>You can deactivate the environement by running:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">conda</span> deactivate</span></code></pre></div></div>
+</section>
+<section id="install-jupyterlab" class="level2">
+<h2 class="anchored" data-anchor-id="install-jupyterlab">Install Jupyterlab</h2>
+<p>The last step is to install Jupyterlab via:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">mamba</span> install jupyterlab <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> conda-forge</span></code></pre></div></div>
+</section>
+<section id="c-kernel-for-vs-code" class="level2">
+<h2 class="anchored" data-anchor-id="c-kernel-for-vs-code">C++ Kernel for VS Code</h2>
+<p>Again, following creme’s instructions, install the following extensions:</p>
+<ul>
+<li>Jupyter by Microsoft</li>
+<li>Jupyter Keymap by Microsoft</li>
+<li>Jupyter Cell Tags by Microsoft</li>
+<li>Jupyter Notebook Renderers by Microsoft</li>
+</ul>
+<p>Following his instructions for the environment didn’t work for me, so I had to work around it. First, create a file with the ipynb extension and with the cling environment active, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">jupyter</span> server password</span></code></pre></div></div>
+<p>Enter your password twice, then after it has been hashed, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">jupyter</span> lab </span></code></pre></div></div>
+<p>Your server should come online, but look for the ‘localhost’ url. Copy that to your clipboard and in VS Code, click on ‘select kernel’.</p>
+<p>I didn’t see a C++ kernel, and if you don’t, click ‘select another kernel’ and then click ‘existing jupyter server’. Paste in your link and enter your password. You now have the C++ kernel!</p>
+<p>If you found any problems, please let me know, but I hope this is helpful for anyone trying to create C/C++ notebooks in VS Code.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Tutorial</category>
+  <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/VSCode for C.html</guid>
+  <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/ckernel.png" medium="image" type="image/png" height="51" width="144"/>
+</item>
 <item>
   <title>Spring Semester Classes</title>
   <dc:creator>Edwin Kodji</dc:creator>
