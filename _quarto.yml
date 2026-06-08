@@ -2,15 +2,18 @@ project:
   type: website
 
 website:
-  description: "Tracking hectic weeks and documenting drifting thoughts. A blog built with Quarto"
+  description: "Documenting drifting thoughts, experiences with my classes, as well as any random projects I may be working on. A blog built with Quarto."
   site-url: https://edwinkio.github.io/Tangents_and_Timelines/
-  title: "Tangents and Timlines"
+  title: "Tangents and Timelines"
   google-analytics: "G-G4BJZ46YZF"
+  cookie-consent: true
   navbar:
     right:
       - about.qmd
       - icon: github
         href: https://github.com/edwinkio
+      - icon: linkedin
+        href: https://www.linkedin.com/in/edwinkoi/
   open-graph: true
 format:
   html:

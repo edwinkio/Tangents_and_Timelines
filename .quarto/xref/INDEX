@@ -13,5 +13,17 @@
   },
   "index.qmd": {
     "index.html": "9811e8a8"
+  },
+  "posts/Freshman Year/Spring/Week 1.qmd": {
+    "Week 1.html": "816a933e"
+  },
+  "posts/Freshman Year/Spring/VSCode for C.qmd": {
+    "VSCode for C.html": "71a30af3"
+  },
+  "posts/Freshman Year/Spring/Interpretation.qmd": {
+    "Interpretation.html": "5dd9788e"
+  },
+  "posts/Freshman Year/Spring/Spring_Reflection.qmd": {
+    "Spring_Reflection.html": "08ecfe14"
   }
 }

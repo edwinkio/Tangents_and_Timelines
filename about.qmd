@@ -1,11 +1,11 @@
 ---
 title: "About"
 about:
-  template: trestles
+  template: jolla
   links:
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/edwinkoi/
     - icon: github
       text: Github
       href: https://github.com/edwinkio
@@ -19,4 +19,4 @@ University of Delaware, Newark \| Newark, DE
 
 Bachelor of Science in Electrical Engineering \| Aug 2025 - Present
 
-***I'm still working on this!***
+***This section is still in progress***
