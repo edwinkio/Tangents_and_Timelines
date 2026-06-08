@@ -9,8 +9,8 @@
 <link>https://edwinkio.github.io/Tangents_and_Timelines/</link>
 <atom:link href="https://edwinkio.github.io/Tangents_and_Timelines/index.xml" rel="self" type="application/rss+xml"/>
 <description>Documenting drifting thoughts, experiences with my classes, as well as any random projects I may be working on. A blog built with Quarto.</description>
-<generator>quarto-1.8.26</generator>
-<lastBuildDate>Sun, 31 May 2026 04:00:00 GMT</lastBuildDate>
+<generator>quarto-1.9.38</generator>
+<lastBuildDate>Sun, 31 May 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Second Semester UD Courses Review</title>
   <dc:creator>Edwin Kodji</dc:creator>
@@ -92,7 +92,7 @@
   <category>Freshman Year</category>
   <category>Spring</category>
   <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Spring_Reflection.html</guid>
-  <pubDate>Sun, 31 May 2026 04:00:00 GMT</pubDate>
+  <pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate>
   <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/spring_reflection.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -168,46 +168,8 @@
   <category>Freshman Year</category>
   <category>Spring</category>
   <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Week 1.html</guid>
-  <pubDate>Mon, 09 Feb 2026 05:00:00 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 00:00:00 GMT</pubDate>
   <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/week1.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>Spring Semester Classes</title>
-  <dc:creator>Edwin Kodji</dc:creator>
-  <link>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Spring Semester Classes.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p><img src="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Classes.png" class="img-fluid"></p>
-<p>My upcoming classes.</p>
-<section id="schedule" class="level1">
-<h1>Schedule</h1>
-<p>I’ll be taking the following classes this upcoming semester:</p>
-<ul>
-<li><p>CISC210 (Intro to Systems Programming)</p></li>
-<li><p>CPEG202 (Intro to Digital Systems)</p></li>
-<li><p>ELEG305 (Signals and Systems)</p></li>
-<li><p>HONR290 (Honors Colloqium - Art of Interpretation)</p></li>
-<li><p>MATH351 (Engineering Mathematics 1)</p></li>
-<li><p>PHYS227 (Fundamentals of Physics Lab 1)</p></li>
-<li><p>PHYS228 (Fundamentals of Physics Lab 2)</p></li>
-</ul>
-<p>One might ask why I’m taking 7 classes next semester. Well, it’s really only five, but the two labs just make it seem like a lot. Also, by doing this, I may be able to graduate a full year early.</p>
-<p>I’m still not too sure what I would really like to do in the future (at least, career wise), so taking these classes will give me options in my final few semesters (either a masters degree, or a co-op). That’s my logic at least.</p>
-<p>I will definitely have to cut down my hours at work. Maybe I’ll only work for four hours during the weekends. That should be sustainable, but I still do have to curb my procrastination.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Freshman Year</category>
-  <category>Spring</category>
-  <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Spring Semester Classes.html</guid>
-  <pubDate>Fri, 16 Jan 2026 05:00:00 GMT</pubDate>
-  <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/preview.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>How to use C++ with Jupyter Notebook in VS Code (Windows)</title>
@@ -304,8 +266,46 @@ font-style: inherit;">jupyter</span> lab </span></code></pre></div></div>
  ]]></description>
   <category>Tutorial</category>
   <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/VSCode for C.html</guid>
-  <pubDate>Fri, 16 Jan 2026 05:00:00 GMT</pubDate>
+  <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/ckernel.png" medium="image" type="image/png" height="51" width="144"/>
+</item>
+<item>
+  <title>Spring Semester Classes</title>
+  <dc:creator>Edwin Kodji</dc:creator>
+  <link>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Spring Semester Classes.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><img src="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Classes.png" class="img-fluid"></p>
+<p>My upcoming classes.</p>
+<section id="schedule" class="level1">
+<h1>Schedule</h1>
+<p>I’ll be taking the following classes this upcoming semester:</p>
+<ul>
+<li><p>CISC210 (Intro to Systems Programming)</p></li>
+<li><p>CPEG202 (Intro to Digital Systems)</p></li>
+<li><p>ELEG305 (Signals and Systems)</p></li>
+<li><p>HONR290 (Honors Colloqium - Art of Interpretation)</p></li>
+<li><p>MATH351 (Engineering Mathematics 1)</p></li>
+<li><p>PHYS227 (Fundamentals of Physics Lab 1)</p></li>
+<li><p>PHYS228 (Fundamentals of Physics Lab 2)</p></li>
+</ul>
+<p>One might ask why I’m taking 7 classes next semester. Well, it’s really only five, but the two labs just make it seem like a lot. Also, by doing this, I may be able to graduate a full year early.</p>
+<p>I’m still not too sure what I would really like to do in the future (at least, career wise), so taking these classes will give me options in my final few semesters (either a masters degree, or a co-op). That’s my logic at least.</p>
+<p>I will definitely have to cut down my hours at work. Maybe I’ll only work for four hours during the weekends. That should be sustainable, but I still do have to curb my procrastination.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Freshman Year</category>
+  <category>Spring</category>
+  <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Spring Semester Classes.html</guid>
+  <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/preview.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>First Semester UD Courses Review</title>
@@ -409,7 +409,7 @@ font-style: inherit;">jupyter</span> lab </span></code></pre></div></div>
   <category>Freshman Year</category>
   <category>Fall</category>
   <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Fall/Fall_Reflection.html</guid>
-  <pubDate>Mon, 15 Dec 2025 05:00:00 GMT</pubDate>
+  <pubDate>Mon, 15 Dec 2025 00:00:00 GMT</pubDate>
   <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Fall/Arches.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -448,7 +448,7 @@ font-style: inherit;">jupyter</span> lab </span></code></pre></div></div>
   <category>Freshman Year</category>
   <category>Fall</category>
   <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Fall/Hackathon.html</guid>
-  <pubDate>Sat, 06 Dec 2025 05:00:00 GMT</pubDate>
+  <pubDate>Sat, 06 Dec 2025 00:00:00 GMT</pubDate>
   <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Fall/hackathon.png" medium="image" type="image/png" height="81" width="144"/>
 </item>
 </channel>
