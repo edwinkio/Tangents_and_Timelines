@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Edwin Kodji">
+<meta name="dcterms.date" content="2026-07-31">
 
-<title>Edwin’s Blog</title>
+<title>Building a Live Transcription Device – Edwin’s Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,31 +22,66 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cc1d64809b8ed731f92ea1275fe9f05b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cc1d64809b8ed731f92ea1275fe9f05b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,36 +109,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      page: 3,
-    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-G4BJZ46YZF"></script>
 
 <script type="text/plain" cookie-consent="tracking">
@@ -129,50 +136,25 @@ cookieconsent.run({
 });
 </script> 
   
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="alternate" type="application/rss+xml" title="Edwin's Blog" href="index.xml" data-external="1"><meta property="og:title" content="Edwin’s Blog">
+<meta property="og:title" content="Building a Live Transcription Device – Edwin’s Blog">
+<meta property="og:description" content="Documenting drifting thoughts, experiences with my classes, as well as any random projects I may be working on. A blog built with Quarto.">
 <meta property="og:image" content="https://edwinkio.github.io/blog/posts/Sophmore Year/ARTT.jpg">
 <meta property="og:site_name" content="Edwin's Blog">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Edwin’s Blog</span>
     </a>
   </div>
@@ -183,7 +165,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -206,285 +188,126 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Edwin’s Blog</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Building a Live Transcription Device</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Projects</div>
+                <div class="quarto-category">Fun</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Edwin Kodji </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 31, 2026</p>
+      </div>
+    </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">August 1, 2026</p>
+      </div>
+    </div>
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="RmFsbA==">Fall <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RnJlc2htYW4lMjBZZWFy">Freshman Year <span class="quarto-category-count">(5)</span></div><div class="category" data-category="RnVu">Fun <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJvamVjdHM=">Projects <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3ByaW5n">Spring <span class="quarto-category-count">(3)</span></div><div class="category" data-category="VHV0b3JpYWw=">Tutorial <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>I built an Assitive Real-time Transcription (ARTT) device.</p>
+<p>Here’s a quick demo of the project, but if you’re interested in the code used to create it, it can be found <a href="https://github.com/edwinkio/Live-Transcribe">here</a></p>
+<p>Here’s a quick demo: </p><div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="ARTT.mp4"></video></div><p></p>
+<p>The recording is in 30 FPS, so it shows frame updates, but to the human eye it’s almost undetectable. Essentially, the flickering in the video isn’t seen in real life.</p>
+<section id="project-architecture" class="level1">
+<h1>Project Architecture</h1>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A(Audio Stream) --&gt; B[Vosk Neural Network] --&gt; C[Encoding Message Stream] --&gt; D(Decoding Stream) --&gt; E(Live Output)
+    M(Microphone) --&gt; R(Raspberry Pi) --&gt; N(Arduino Nano) --&gt; SSD(SSD1306)
+    linkStyle default stroke: green;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<section id="audio-stream" class="level2">
+<h2 class="anchored" data-anchor-id="audio-stream">Audio Stream</h2>
+<p>This part is relatively simple. The script simply takes audio through a microphone at a sample rate of 44.1 kHZ (the sample rate of the USB microphone I used). Depending on the microphone used, the value can be changed, however. Note that the <code>blocksize</code> variable should be changed accordingly (half of the sample rate, or 0.5 seconds of audio).</p>
+</section>
+<section id="vosk-neural-network" class="level2">
+<h2 class="anchored" data-anchor-id="vosk-neural-network">Vosk Neural Network</h2>
+<p>The Vosk Neural Network for this project is the “small” model with an error rate of 9.85 on the LibriSpeech data set. I decided to use it due to its offline and lightweight build. The sample rate chosen will be automatically downsampled to 16 kHZ, since Vosk operates at that rate.</p>
+<p>Vosk is loaded onto a Raspberry Pi and the audio stream is passed into it for recognition. The recognition has two parts: <code>final</code> and <code>partial</code> results. <code>final</code> refers to the transcription when the neural network has a guess at what has been said (at the end of a sentence, for example); <code>partial</code> refers to what is currently being said.</p>
+</section>
+<section id="encoding-message-stream" class="level2">
+<h2 class="anchored" data-anchor-id="encoding-message-stream">Encoding Message Stream</h2>
+<p>Transcription messages are encoded in the following format: <code>(final_text + partial_text +\n)</code>, where \n refers to the new line character.</p>
+<p>For example, the message “My name is Edwin. I love cats.” would be embedded as follows:</p>
+<p><code>(I am Edwin\nI love cats)</code>.</p>
+<p>The message is then encoded in <code>utf-8</code> and sent to the Arduino for decoding. Note that the latest 4 sentences are continuously sent over.</p>
+</section>
+<section id="decoding-stream" class="level2">
+<h2 class="anchored" data-anchor-id="decoding-stream">Decoding Stream</h2>
+<p>This part of the project is run on a dedicated microprocessor (an Arduino Nano, for example). It detects the “(” and “)” characters as the start and end of a message, and continuously reads characters between those two indicators.</p>
+<p>Here, a non blocking state machine is used. It prevents buffer overflows with the below code and sends the decoded message to the display.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>currentChar <span class="op">!=</span> end<span class="op">){</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>index <span class="op">&gt;=</span> numChars<span class="op">)</span> index <span class="op">=</span> numChars <span class="op">-</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    receivedChars<span class="op">[</span>index<span class="op">]</span> <span class="op">=</span> currentChar<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    index<span class="op">++;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span><span class="op">{</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    isReceiving <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    receivedChars<span class="op">[</span>index<span class="op">]</span> <span class="op">=</span> <span class="ch">'</span><span class="sc">\0</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    index <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    newDataReady <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="live-output" class="level2">
+<h2 class="anchored" data-anchor-id="live-output">Live Output</h2>
+<p>This part of the project is also fairly simple. After the message has been parsed, the output is sent to the SSD1306. The display has color inverting capabilities, allowing for visual accessibility and readability.</p>
+</section>
+</section>
+<section id="next-steps" class="level1">
+<h1>Next Steps</h1>
+<p>Some actionable next steps for this project are:</p>
+<ul>
+<li>Explore other Speech-To-Text models such as Whisper. While Vosk is simple to use, I noticed that the error rate can get fairly large.</li>
+<li>In noisy contexts, the model doesn’t work very well. I hope to integrate signal processing to improve accuracy.</li>
+<li>Improve the display. A larger display would allow the project to be more accessible.</li>
+</ul>
+<p>I learned quite a bit from this project, and I’m glad I got a working prototype. I hope to continue to improve it in the future!</p>
+<p>P.S - ARTT is such an awkward name for this project, but it’s certainly a lot better than the others I thought of…</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-      <option value="listing-author" data-direction="asc">
-        Author
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="UHJvamVjdHMlMkNGdW4=" data-listing-date-sort="1785470400000" data-listing-file-modified-sort="1785259750929" data-listing-date-modified-sort="1785556800000" data-listing-reading-time-sort="3" data-listing-word-count-sort="598">
-<a href="./posts/Sophmore Year/Transcription_Device.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/Sophmore Year/ARTT.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Building a Live Transcription Device
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHJvamVjdHM='); return false;">Projects</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RnVu'); return false;">Fun</div>
-
-</div>
-<div class="card-text listing-description delink">
-I built an Assitive Real-time Transcription (ARTT) device.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Edwin Kodji
-</div>
-<div class="listing-date">
-Jul 31, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="RnJlc2htYW4lMjBZZWFyJTJDU3ByaW5n" data-listing-date-sort="1780200000000" data-listing-file-modified-sort="1780937995173" data-listing-date-modified-sort="1780891200000" data-listing-reading-time-sort="6" data-listing-word-count-sort="1197">
-<a href="./posts/Freshman Year/Spring/Spring_Reflection.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/Freshman Year/Spring/spring_reflection.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Second Semester UD Courses Review
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RnJlc2htYW4lMjBZZWFy'); return false;">Freshman Year</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3ByaW5n'); return false;">Spring</div>
-
-</div>
-<div class="card-text listing-description delink">
-A little recap of my second semester classes.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Edwin Kodji
-</div>
-<div class="listing-date">
-May 31, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="RnJlc2htYW4lMjBZZWFyJTJDU3ByaW5n" data-listing-date-sort="1770613200000" data-listing-file-modified-sort="1785009475992" data-listing-date-modified-sort="1780891200000" data-listing-reading-time-sort="6" data-listing-word-count-sort="1081">
-<a href="./posts/Freshman Year/Spring/Week 1.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/Freshman Year/Spring/week1.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Week 1 - School Blues
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RnJlc2htYW4lMjBZZWFy'); return false;">Freshman Year</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3ByaW5n'); return false;">Spring</div>
-
-</div>
-<div class="card-text listing-description delink">
-A recap of the first week of my second semester.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Edwin Kodji
-</div>
-<div class="listing-date">
-Feb 9, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="RnJlc2htYW4lMjBZZWFyJTJDU3ByaW5n" data-listing-date-sort="1768539600000" data-listing-file-modified-sort="1770075594227" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="177">
-<a href="./posts/Freshman Year/Spring/Spring Semester Classes.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" data-src="./posts/Freshman Year/Spring/preview.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Spring Semester Classes
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RnJlc2htYW4lMjBZZWFy'); return false;">Freshman Year</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3ByaW5n'); return false;">Spring</div>
-
-</div>
-<div class="card-text listing-description delink">
-My upcoming classes.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Edwin Kodji
-</div>
-<div class="listing-date">
-Jan 16, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="VHV0b3JpYWw=" data-listing-date-sort="1768539600000" data-listing-file-modified-sort="1780938237825" data-listing-date-modified-sort="1780891200000" data-listing-reading-time-sort="2" data-listing-word-count-sort="336">
-<a href="./posts/Freshman Year/Spring/VSCode for C.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" data-src="./posts/Freshman Year/Spring/ckernel.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-How to use C++ with Jupyter Notebook in VS Code (Windows)
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VHV0b3JpYWw='); return false;">Tutorial</div>
-
-</div>
-<div class="card-text listing-description delink">
-C++ kernel for Jupyer Notebook (VS Code).
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Edwin Kodji
-</div>
-<div class="listing-date">
-Jan 16, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="RnJlc2htYW4lMjBZZWFyJTJDRmFsbA==" data-listing-date-sort="1765774800000" data-listing-file-modified-sort="1784301783802" data-listing-date-modified-sort="1769576400000" data-listing-reading-time-sort="7" data-listing-word-count-sort="1291">
-<a href="./posts/Freshman Year/Fall/Fall_Reflection.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" data-src="./posts/Freshman Year/Fall/Arches.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-First Semester UD Courses Review
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RnJlc2htYW4lMjBZZWFy'); return false;">Freshman Year</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RmFsbA=='); return false;">Fall</div>
-
-</div>
-<div class="card-text listing-description delink">
-How did my first semester go?
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Edwin Kodji
-</div>
-<div class="listing-date">
-Dec 15, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="RnJlc2htYW4lMjBZZWFyJTJDRmFsbA==" data-listing-date-sort="1764997200000" data-listing-file-modified-sort="1769622947778" data-listing-date-modified-sort="1768453200000" data-listing-reading-time-sort="3" data-listing-word-count-sort="424">
-<a href="./posts/Freshman Year/Fall/Hackathon.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" data-src="./posts/Freshman Year/Fall/hackathon.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-The Honors Hackathon
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RnJlc2htYW4lMjBZZWFy'); return false;">Freshman Year</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RmFsbA=='); return false;">Fall</div>
-
-</div>
-<div class="card-text listing-description delink">
-My first post!
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Edwin Kodji
-</div>
-<div class="listing-date">
-Dec 6, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
-  <ul class="pagination"></ul>
-</nav>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -928,22 +751,7 @@ Dec 6, 2025
     </div>
   </div>
 </footer>
-
-
-
-
-</body></html>"nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">
-
-<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
-    <div class="nav-footer-right">
-      &nbsp;
-    </div>
-  </div>
-</footer>
+<script>videojs(video_shortcode_videojs_video1);</script>
 
 
 
