@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Edwin Kodji">
-<meta name="dcterms.date" content="2026-07-31">
+<meta name="dcterms.date" content="2026-07-28">
 
 <title>Building a Live Transcription Device – Edwin’s Blog</title>
 <style>
@@ -210,14 +210,14 @@ cookieconsent.run({
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 31, 2026</p>
+        <p class="date">July 28, 2026</p>
       </div>
     </div>
     
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">August 1, 2026</p>
+        <p class="date-modified">July 30, 2026</p>
       </div>
     </div>
       
@@ -235,7 +235,7 @@ cookieconsent.run({
 
 
 
-<p>I built an Assitive Real-time Transcription (ARTT) device.</p>
+<p>I built an Assitive Real-time Transcription (ARTT) Device.</p>
 <p>Here’s a quick demo of the project, but if you’re interested in the code used to create it, it can be found <a href="https://github.com/edwinkio/Live-Transcribe">here</a></p>
 <p>Here’s a quick demo: </p><div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="ARTT.mp4"></video></div><p></p>
 <p>The recording is in 30 FPS, so it shows frame updates, but to the human eye it’s almost undetectable. Essentially, the flickering in the video isn’t seen in real life.</p>
@@ -275,18 +275,31 @@ cookieconsent.run({
 <section id="decoding-stream" class="level2">
 <h2 class="anchored" data-anchor-id="decoding-stream">Decoding Stream</h2>
 <p>This part of the project is run on a dedicated microprocessor (an Arduino Nano, for example). It detects the “(” and “)” characters as the start and end of a message, and continuously reads characters between those two indicators.</p>
-<p>Here, a non blocking state machine is used. It prevents buffer overflows with the below code and sends the decoded message to the display.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>currentChar <span class="op">!=</span> end<span class="op">){</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>index <span class="op">&gt;=</span> numChars<span class="op">)</span> index <span class="op">=</span> numChars <span class="op">-</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    receivedChars<span class="op">[</span>index<span class="op">]</span> <span class="op">=</span> currentChar<span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    index<span class="op">++;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span><span class="op">{</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    isReceiving <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    receivedChars<span class="op">[</span>index<span class="op">]</span> <span class="op">=</span> <span class="ch">'</span><span class="sc">\0</span><span class="ch">'</span><span class="op">;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    index <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    newDataReady <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here, a non blocking state machine is used. It prevents buffer overflows with the below code and updates the received characterers variable, updating the display.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span> start <span class="op">=</span> <span class="ch">'('</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span> end <span class="op">=</span> <span class="ch">')'</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span> currentChar<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">&amp;&amp;</span> <span class="op">!</span>newDataReady<span class="op">){</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    currentChar <span class="op">=</span> Serial<span class="op">.</span>read<span class="op">();</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>isReceiving<span class="op">){</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>currentChar <span class="op">!=</span> end<span class="op">){</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>index <span class="op">&gt;=</span> numChars<span class="op">)</span> index <span class="op">=</span> numChars <span class="op">-</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        receivedChars<span class="op">[</span>index<span class="op">]</span> <span class="op">=</span> currentChar<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        index<span class="op">++;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span><span class="op">{</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        isReceiving <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        receivedChars<span class="op">[</span>index<span class="op">]</span> <span class="op">=</span> <span class="ch">'</span><span class="sc">\0</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        index <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        newDataReady <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>currentChar <span class="op">==</span> start<span class="op">)</span> isReceiving <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="live-output" class="level2">
 <h2 class="anchored" data-anchor-id="live-output">Live Output</h2>
@@ -300,6 +313,7 @@ cookieconsent.run({
 <li>Explore other Speech-To-Text models such as Whisper. While Vosk is simple to use, I noticed that the error rate can get fairly large.</li>
 <li>In noisy contexts, the model doesn’t work very well. I hope to integrate signal processing to improve accuracy.</li>
 <li>Improve the display. A larger display would allow the project to be more accessible.</li>
+<li>Design a proper enclosure combining all of the above ideas! That would be really fun to work on.</li>
 </ul>
 <p>I learned quite a bit from this project, and I’m glad I got a working prototype. I hope to continue to improve it in the future!</p>
 <p>P.S - ARTT is such an awkward name for this project, but it’s certainly a lot better than the others I thought of…</p>

@@ -4,7 +4,7 @@
     "href": "posts/Sophmore Year/Transcription_Device.html",
     "title": "Building a Live Transcription Device",
     "section": "",
-    "text": "I built an Assitive Real-time Transcription (ARTT) device.\nHere’s a quick demo of the project, but if you’re interested in the code used to create it, it can be found here\nHere’s a quick demo:\nThe recording is in 30 FPS, so it shows frame updates, but to the human eye it’s almost undetectable. Essentially, the flickering in the video isn’t seen in real life."
+    "text": "I built an Assitive Real-time Transcription (ARTT) Device.\nHere’s a quick demo of the project, but if you’re interested in the code used to create it, it can be found here\nHere’s a quick demo:\nThe recording is in 30 FPS, so it shows frame updates, but to the human eye it’s almost undetectable. Essentially, the flickering in the video isn’t seen in real life."
   },
   {
     "objectID": "posts/Sophmore Year/Transcription_Device.html#audio-stream",
@@ -32,7 +32,7 @@
     "href": "posts/Sophmore Year/Transcription_Device.html#decoding-stream",
     "title": "Building a Live Transcription Device",
     "section": "Decoding Stream",
-    "text": "Decoding Stream\nThis part of the project is run on a dedicated microprocessor (an Arduino Nano, for example). It detects the “(” and “)” characters as the start and end of a message, and continuously reads characters between those two indicators.\nHere, a non blocking state machine is used. It prevents buffer overflows with the below code and sends the decoded message to the display.\nif (currentChar != end){\n    if (index &gt;= numChars) index = numChars - 1;\n    receivedChars[index] = currentChar;\n    index++;\n}\nelse{\n    isReceiving = false;\n    receivedChars[index] = '\\0';\n    index = 0;\n    newDataReady = true;\n}"
+    "text": "Decoding Stream\nThis part of the project is run on a dedicated microprocessor (an Arduino Nano, for example). It detects the “(” and “)” characters as the start and end of a message, and continuously reads characters between those two indicators.\nHere, a non blocking state machine is used. It prevents buffer overflows with the below code and updates the received characterers variable, updating the display.\nchar start = '(';\nchar end = ')';\nchar currentChar;\n\nwhile (Serial.available() && !newDataReady){\n\n    currentChar = Serial.read();\n\n    if (isReceiving){\n    if (currentChar != end){\n        if (index &gt;= numChars) index = numChars - 1;\n\n        receivedChars[index] = currentChar;\n        index++;\n    }\n    else{\n        isReceiving = false;\n        receivedChars[index] = '\\0';\n        index = 0;\n        newDataReady = true;\n    }\n    }\n    else if (currentChar == start) isReceiving = true;\n}"
   },
   {
     "objectID": "posts/Sophmore Year/Transcription_Device.html#live-output",
@@ -144,7 +144,7 @@
     "href": "index.html",
     "title": "Edwin’s Blog",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nBuilding a Live Transcription Device\n\n\n\nProjects\n\nFun\n\n\n\n\n\n\n\nEdwin Kodji\n\n\nJul 31, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nSecond Semester UD Courses Review\n\n\n\nFreshman Year\n\nSpring\n\n\n\n\n\n\n\nEdwin Kodji\n\n\nMay 31, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1 - School Blues\n\n\n\nFreshman Year\n\nSpring\n\n\n\n\n\n\n\nEdwin Kodji\n\n\nFeb 9, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nSpring Semester Classes\n\n\n\nFreshman Year\n\nSpring\n\n\n\n\n\n\n\nEdwin Kodji\n\n\nJan 16, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to use C++ with Jupyter Notebook in VS Code (Windows)\n\n\n\nTutorial\n\n\n\n\n\n\n\nEdwin Kodji\n\n\nJan 16, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nFirst Semester UD Courses Review\n\n\n\nFreshman Year\n\nFall\n\n\n\n\n\n\n\nEdwin Kodji\n\n\nDec 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe Honors Hackathon\n\n\n\nFreshman Year\n\nFall\n\n\n\n\n\n\n\nEdwin Kodji\n\n\nDec 6, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nBuilding a Live Transcription Device\n\n\n\nProjects\n\nFun\n\n\n\n\n\n\n\nEdwin Kodji\n\n\nJul 28, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nSecond Semester UD Courses Review\n\n\n\nFreshman Year\n\nSpring\n\n\n\n\n\n\n\nEdwin Kodji\n\n\nMay 31, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1 - School Blues\n\n\n\nFreshman Year\n\nSpring\n\n\n\n\n\n\n\nEdwin Kodji\n\n\nFeb 9, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nSpring Semester Classes\n\n\n\nFreshman Year\n\nSpring\n\n\n\n\n\n\n\nEdwin Kodji\n\n\nJan 16, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to use C++ with Jupyter Notebook in VS Code (Windows)\n\n\n\nTutorial\n\n\n\n\n\n\n\nEdwin Kodji\n\n\nJan 16, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nFirst Semester UD Courses Review\n\n\n\nFreshman Year\n\nFall\n\n\n\n\n\n\n\nEdwin Kodji\n\n\nDec 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe Honors Hackathon\n\n\n\nFreshman Year\n\nFall\n\n\n\n\n\n\n\nEdwin Kodji\n\n\nDec 6, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
