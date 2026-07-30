@@ -3,8 +3,8 @@ project:
 
 website:
   description: "Documenting drifting thoughts, experiences with my classes, as well as any random projects I may be working on. A blog built with Quarto."
-  site-url: https://edwinkio.github.io/Tangents_and_Timelines/
-  title: "Tangents and Timelines"
+  site-url: https://edwinkio.github.io/blog/
+  title: "Edwin's Blog"
   google-analytics: "G-G4BJZ46YZF"
   cookie-consent: true
   navbar:
@@ -22,7 +22,7 @@ format:
 comments:
   giscus:
     repo:
-      edwinkio/Tangents_and_Timelines
+      edwinkio/blog
 theme:
   light: lux
   dark: darkly

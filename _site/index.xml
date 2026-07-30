@@ -5,16 +5,269 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>Tangents and Timelines</title>
-<link>https://edwinkio.github.io/Tangents_and_Timelines/</link>
-<atom:link href="https://edwinkio.github.io/Tangents_and_Timelines/index.xml" rel="self" type="application/rss+xml"/>
+<title>Edwin&#39;s Blog</title>
+<link>https://edwinkio.github.io/blog/</link>
+<atom:link href="https://edwinkio.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Documenting drifting thoughts, experiences with my classes, as well as any random projects I may be working on. A blog built with Quarto.</description>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Sun, 31 May 2026 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 28 Jul 2026 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Building a Live Transcription Device</title>
+  <dc:creator>Edwin Kodji</dc:creator>
+  <link>https://edwinkio.github.io/blog/posts/Sophmore Year/Transcription_Device.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I built an Assitive Real-time Transcription (ARTT) Device.</p>
+<p>Here’s a quick demo of the project, but if you’re interested in the code used to create it, it can be found <a href="https://github.com/edwinkio/Live-Transcribe">here</a></p>
+<p>Here’s a quick demo: </p><div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="ARTT.mp4"></video></div><p></p>
+<p>The recording is in 30 FPS, so it shows frame updates, but to the human eye it’s almost undetectable. Essentially, the flickering in the video isn’t seen in real life.</p>
+<section id="project-architecture" class="level1">
+<h1>Project Architecture</h1>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A(Audio Stream) --&gt; B[Vosk Neural Network] --&gt; C[Encoding Message Stream] --&gt; D(Decoding Stream) --&gt; E(Live Output)
+    M(Microphone) --&gt; R(Raspberry Pi) --&gt; N(Arduino Nano) --&gt; SSD(SSD1306)
+    linkStyle default stroke: green;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<section id="audio-stream" class="level2">
+<h2 class="anchored" data-anchor-id="audio-stream">Audio Stream</h2>
+<p>This part is relatively simple. The script simply takes audio through a microphone at a sample rate of 44.1 kHZ (the sample rate of the USB microphone I used). Depending on the microphone used, the value can be changed, however. Note that the <code>blocksize</code> variable should be changed accordingly (half of the sample rate, or 0.5 seconds of audio).</p>
+</section>
+<section id="vosk-neural-network" class="level2">
+<h2 class="anchored" data-anchor-id="vosk-neural-network">Vosk Neural Network</h2>
+<p>The Vosk Neural Network for this project is the “small” model with an error rate of 9.85 on the LibriSpeech data set. I decided to use it due to its offline and lightweight build. The sample rate chosen will be automatically downsampled to 16 kHZ, since Vosk operates at that rate.</p>
+<p>Vosk is loaded onto a Raspberry Pi and the audio stream is passed into it for recognition. The recognition has two parts: <code>final</code> and <code>partial</code> results. <code>final</code> refers to the transcription when the neural network has a guess at what has been said (at the end of a sentence, for example); <code>partial</code> refers to what is currently being said.</p>
+</section>
+<section id="encoding-message-stream" class="level2">
+<h2 class="anchored" data-anchor-id="encoding-message-stream">Encoding Message Stream</h2>
+<p>Transcription messages are encoded in the following format: <code>(final_text + partial_text +\n)</code>, where \n refers to the new line character.</p>
+<p>For example, the message “My name is Edwin. I love cats.” would be embedded as follows:</p>
+<p><code>(I am Edwin\nI love cats)</code>.</p>
+<p>The message is then encoded in <code>utf-8</code> and sent to the Arduino for decoding. Note that the latest 4 sentences are continuously sent over.</p>
+</section>
+<section id="decoding-stream" class="level2">
+<h2 class="anchored" data-anchor-id="decoding-stream">Decoding Stream</h2>
+<p>This part of the project is run on a dedicated microprocessor (an Arduino Nano, for example). It detects the “(” and “)” characters as the start and end of a message, and continuously reads characters between those two indicators.</p>
+<p>Here, a non blocking state machine is used. It prevents buffer overflows with the below code and updates the received characterers variable, updating the display.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">char</span> start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'('</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-2"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">char</span> end <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">')'</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-3"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">char</span> currentChar<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">while</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>Serial<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>available<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">()</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;&amp;</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>newDataReady<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">){</span></span>
+<span id="cb1-6"></span>
+<span id="cb1-7">    currentChar <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Serial<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>read<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">();</span></span>
+<span id="cb1-8"></span>
+<span id="cb1-9">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>isReceiving<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">){</span></span>
+<span id="cb1-10">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>currentChar <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!=</span> end<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">){</span></span>
+<span id="cb1-11">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>index <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> numChars<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> index <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> numChars <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-12"></span>
+<span id="cb1-13">        receivedChars<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>index<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> currentChar<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-14">        index<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">++;</span></span>
+<span id="cb1-15">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-16">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-17">        isReceiving <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-18">        receivedChars<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>index<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\0</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-19">        index <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-20">        newDataReady <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-21">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-22">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-23">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>currentChar <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> start<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> isReceiving <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-24"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></div>
+</section>
+<section id="live-output" class="level2">
+<h2 class="anchored" data-anchor-id="live-output">Live Output</h2>
+<p>This part of the project is also fairly simple. After the message has been parsed, the output is sent to the SSD1306. The display has color inverting capabilities, allowing for visual accessibility and readability.</p>
+</section>
+</section>
+<section id="next-steps" class="level1">
+<h1>Next Steps</h1>
+<p>Some actionable next steps for this project are:</p>
+<ul>
+<li>Explore other Speech-To-Text models such as Whisper. While Vosk is simple to use, I noticed that the error rate can get fairly large.</li>
+<li>In noisy contexts, the model doesn’t work very well. I hope to integrate signal processing to improve accuracy.</li>
+<li>Improve the display. A larger display would allow the project to be more accessible.</li>
+<li>Design a proper enclosure combining all of the above ideas! That would be really fun to work on.</li>
+</ul>
+<p>I learned quite a bit from this project, and I’m glad I got a working prototype. I hope to continue to improve it in the future!</p>
+<p>P.S - ARTT is such an awkward name for this project, but it’s certainly a lot better than the others I thought of…</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Projects</category>
+  <category>Fun</category>
+  <guid>https://edwinkio.github.io/blog/posts/Sophmore Year/Transcription_Device.html</guid>
+  <pubDate>Tue, 28 Jul 2026 04:00:00 GMT</pubDate>
+  <media:content url="https://edwinkio.github.io/blog/posts/Sophmore Year/ARTT.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Second Semester UD Courses Review</title>
   <dc:creator>Edwin Kodji</dc:creator>
-  <link>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Spring_Reflection.html</link>
+  <link>https://edwinkio.github.io/blog/posts/Freshman Year/Spring/Spring_Reflection.html</link>
   <description><![CDATA[ 
 
 
@@ -91,14 +344,14 @@
  ]]></description>
   <category>Freshman Year</category>
   <category>Spring</category>
-  <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Spring_Reflection.html</guid>
+  <guid>https://edwinkio.github.io/blog/posts/Freshman Year/Spring/Spring_Reflection.html</guid>
   <pubDate>Sun, 31 May 2026 04:00:00 GMT</pubDate>
-  <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/spring_reflection.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://edwinkio.github.io/blog/posts/Freshman Year/Spring/spring_reflection.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Week 1 - School Blues</title>
   <dc:creator>Edwin Kodji</dc:creator>
-  <link>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Week 1.html</link>
+  <link>https://edwinkio.github.io/blog/posts/Freshman Year/Spring/Week 1.html</link>
   <description><![CDATA[ 
 
 
@@ -148,7 +401,7 @@
 <section id="friday" class="level2">
 <h2 class="anchored" data-anchor-id="friday">Friday</h2>
 <p>My ELEG305 discussion went well today. I actually understood the problems, but then again, they were fairly basic. We started the homework, which I’m really thankful for because I haven’t started it myself.</p>
-<p>I then had a giant 4 hour block. I went home to eat and finish reading my assigned reading. It turns out that we didn’t really have to read all of it, but we still had a fairly interesting dicussion. I missed a few points Scalia (the author) nade, probably because I didn’t take notes. I might have to reread it, since it seems like we’ll be spending a while studying his points in depth.</p>
+<p>I then had a giant 4 hour block. I went home to eat and finish reading my assigned reading. It turns out that we didn’t really have to read all of it, but we still had a fairly interesting dicussion. I missed a few points Scalia (the author) made, probably because I didn’t take notes. I might have to reread it, since it seems like we’ll be spending a while studying his points in depth.</p>
 <p>I haven’t really done much today. I should probably get some work done, but I am so lazy.</p>
 </section>
 <section id="note" class="level2">
@@ -167,21 +420,21 @@
 </section></div> ]]></description>
   <category>Freshman Year</category>
   <category>Spring</category>
-  <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Week 1.html</guid>
+  <guid>https://edwinkio.github.io/blog/posts/Freshman Year/Spring/Week 1.html</guid>
   <pubDate>Mon, 09 Feb 2026 05:00:00 GMT</pubDate>
-  <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/week1.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://edwinkio.github.io/blog/posts/Freshman Year/Spring/week1.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Spring Semester Classes</title>
   <dc:creator>Edwin Kodji</dc:creator>
-  <link>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Spring Semester Classes.html</link>
+  <link>https://edwinkio.github.io/blog/posts/Freshman Year/Spring/Spring Semester Classes.html</link>
   <description><![CDATA[ 
 
 
 
 
 
-<p><img src="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Classes.png" class="img-fluid"></p>
+<p><img src="https://edwinkio.github.io/blog/posts/Freshman Year/Spring/Classes.png" class="img-fluid"></p>
 <p>My upcoming classes.</p>
 <section id="schedule" class="level1">
 <h1>Schedule</h1>
@@ -205,14 +458,14 @@
  ]]></description>
   <category>Freshman Year</category>
   <category>Spring</category>
-  <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/Spring Semester Classes.html</guid>
+  <guid>https://edwinkio.github.io/blog/posts/Freshman Year/Spring/Spring Semester Classes.html</guid>
   <pubDate>Fri, 16 Jan 2026 05:00:00 GMT</pubDate>
-  <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/preview.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://edwinkio.github.io/blog/posts/Freshman Year/Spring/preview.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>How to use C++ with Jupyter Notebook in VS Code (Windows)</title>
   <dc:creator>Edwin Kodji</dc:creator>
-  <link>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/VSCode for C.html</link>
+  <link>https://edwinkio.github.io/blog/posts/Freshman Year/Spring/VSCode for C.html</link>
   <description><![CDATA[ 
 
 
@@ -303,14 +556,14 @@ font-style: inherit;">jupyter</span> lab </span></code></pre></div></div>
 
  ]]></description>
   <category>Tutorial</category>
-  <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/VSCode for C.html</guid>
+  <guid>https://edwinkio.github.io/blog/posts/Freshman Year/Spring/VSCode for C.html</guid>
   <pubDate>Fri, 16 Jan 2026 05:00:00 GMT</pubDate>
-  <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Spring/ckernel.png" medium="image" type="image/png" height="51" width="144"/>
+  <media:content url="https://edwinkio.github.io/blog/posts/Freshman Year/Spring/ckernel.png" medium="image" type="image/png" height="51" width="144"/>
 </item>
 <item>
   <title>First Semester UD Courses Review</title>
   <dc:creator>Edwin Kodji</dc:creator>
-  <link>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Fall/Fall_Reflection.html</link>
+  <link>https://edwinkio.github.io/blog/posts/Freshman Year/Fall/Fall_Reflection.html</link>
   <description><![CDATA[ 
 
 
@@ -408,14 +661,14 @@ font-style: inherit;">jupyter</span> lab </span></code></pre></div></div>
  ]]></description>
   <category>Freshman Year</category>
   <category>Fall</category>
-  <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Fall/Fall_Reflection.html</guid>
+  <guid>https://edwinkio.github.io/blog/posts/Freshman Year/Fall/Fall_Reflection.html</guid>
   <pubDate>Mon, 15 Dec 2025 05:00:00 GMT</pubDate>
-  <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Fall/Arches.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://edwinkio.github.io/blog/posts/Freshman Year/Fall/Arches.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>The Honors Hackathon</title>
   <dc:creator>Edwin Kodji</dc:creator>
-  <link>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Fall/Hackathon.html</link>
+  <link>https://edwinkio.github.io/blog/posts/Freshman Year/Fall/Hackathon.html</link>
   <description><![CDATA[ 
 
 
@@ -447,9 +700,9 @@ font-style: inherit;">jupyter</span> lab </span></code></pre></div></div>
  ]]></description>
   <category>Freshman Year</category>
   <category>Fall</category>
-  <guid>https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Fall/Hackathon.html</guid>
+  <guid>https://edwinkio.github.io/blog/posts/Freshman Year/Fall/Hackathon.html</guid>
   <pubDate>Sat, 06 Dec 2025 05:00:00 GMT</pubDate>
-  <media:content url="https://edwinkio.github.io/Tangents_and_Timelines/posts/Freshman Year/Fall/hackathon.png" medium="image" type="image/png" height="81" width="144"/>
+  <media:content url="https://edwinkio.github.io/blog/posts/Freshman Year/Fall/hackathon.png" medium="image" type="image/png" height="81" width="144"/>
 </item>
 </channel>
 </rss>

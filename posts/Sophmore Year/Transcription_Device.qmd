@@ -1,0 +1,95 @@
+---
+title: "Building a Live Transcription Device"
+author: "Edwin Kodji"
+date: "2026-7-28"
+date-modified: "2026-7-30"
+categories: [Projects, Fun]
+image: "ARTT.jpg"
+---
+
+I built an Assitive Real-time Transcription (ARTT) Device.
+
+Here's a quick demo of the project, but if you're interested in the code used to create it, it can be found [here](https://github.com/edwinkio/Live-Transcribe)
+
+Here's a quick demo: {{<video ARTT.mp4>}}
+
+The recording is in 30 FPS, so it shows frame updates, but to the human eye it's almost undetectable. Essentially, the flickering in the video isn't seen in real life.
+
+# Project Architecture
+
+```{mermaid}
+flowchart LR
+    A(Audio Stream) --> B[Vosk Neural Network] --> C[Encoding Message Stream] --> D(Decoding Stream) --> E(Live Output)
+    M(Microphone) --> R(Raspberry Pi) --> N(Arduino Nano) --> SSD(SSD1306)
+    linkStyle default stroke: green;
+```
+
+## Audio Stream
+
+This part is relatively simple. The script simply takes audio through a microphone at a sample rate of 44.1 kHZ (the sample rate of the USB microphone I used). Depending on the microphone used, the value can be changed, however. Note that the `blocksize` variable should be changed accordingly (half of the sample rate, or 0.5 seconds of audio).
+
+## Vosk Neural Network
+
+The Vosk Neural Network for this project is the "small" model with an error rate of 9.85 on the LibriSpeech data set. I decided to use it due to its offline and lightweight build. The sample rate chosen will be automatically downsampled to 16 kHZ, since Vosk operates at that rate.
+
+Vosk is loaded onto a Raspberry Pi and the audio stream is passed into it for recognition. The recognition has two parts: `final` and `partial` results. `final` refers to the transcription when the neural network has a guess at what has been said (at the end of a sentence, for example); `partial` refers to what is currently being said.
+
+## Encoding Message Stream
+
+Transcription messages are encoded in the following format: `(final_text + partial_text +\n)`, where \\n refers to the new line character.
+
+For example, the message "My name is Edwin. I love cats." would be embedded as follows:
+
+`(I am Edwin\nI love cats)`.
+
+The message is then encoded in `utf-8` and sent to the Arduino for decoding. Note that the latest 4 sentences are continuously sent over.
+
+## Decoding Stream
+
+This part of the project is run on a dedicated microprocessor (an Arduino Nano, for example). It detects the "(" and ")" characters as the start and end of a message, and continuously reads characters between those two indicators. 
+
+Here, a non blocking state machine is used. It prevents buffer overflows with the below code and updates the received characterers variable, updating the display.
+
+```c++
+char start = '(';
+char end = ')';
+char currentChar;
+
+while (Serial.available() && !newDataReady){
+
+    currentChar = Serial.read();
+
+    if (isReceiving){
+    if (currentChar != end){
+        if (index >= numChars) index = numChars - 1;
+
+        receivedChars[index] = currentChar;
+        index++;
+    }
+    else{
+        isReceiving = false;
+        receivedChars[index] = '\0';
+        index = 0;
+        newDataReady = true;
+    }
+    }
+    else if (currentChar == start) isReceiving = true;
+}
+```
+
+## Live Output
+
+This part of the project is also fairly simple. After the message has been parsed, the output is sent to the SSD1306. The display has color inverting capabilities, allowing for visual accessibility and readability. 
+
+# Next Steps
+
+Some actionable next steps for this project are:
+
+- Explore other Speech-To-Text models such as Whisper. While Vosk is simple to use, I noticed that the error rate can get fairly large.
+- In noisy contexts, the model doesn't work very well. I hope to integrate signal processing to improve accuracy.
+- Improve the display. A larger display would allow the project to be more accessible.
+- Design a proper enclosure combining all of the above ideas! That would be really fun to work on.
+
+I learned quite a bit from this project, and I'm glad I got a working prototype. I hope to continue to improve it in the future!
+
+P.S - ARTT is such an awkward name for this project, but it's certainly a lot better than the others I thought of...
