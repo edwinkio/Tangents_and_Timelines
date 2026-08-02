@@ -222,7 +222,7 @@ cookieconsent.run({
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">July 30, 2026</p>
+        <p class="date-modified">August 2, 2026</p>
       </div>
     </div>
       
@@ -268,11 +268,12 @@ cookieconsent.run({
 <section id="vosk-neural-network" class="level2">
 <h2 class="anchored" data-anchor-id="vosk-neural-network">Vosk Neural Network</h2>
 <p>The Vosk Neural Network for this project is the “small” model with an error rate of 9.85 on the LibriSpeech data set. I decided to use it due to its offline and lightweight build. The sample rate chosen will be automatically downsampled to 16 kHZ, since Vosk operates at that rate.</p>
-<p>Vosk is loaded onto a Raspberry Pi and the audio stream is passed into it for recognition. The recognition has two parts: <code>final</code> and <code>partial</code> results. <code>final</code> refers to the transcription when the neural network has a guess at what has been said (at the end of a sentence, for example); <code>partial</code> refers to what is currently being said.</p>
+<p>Vosk is loaded onto a Raspberry Pi and the audio stream is passed into it for recognition. The recognition has two parts: <code>final</code> and <code>partial</code> results. <code>final</code> refers to the transcription when the neural network has a guess at what has been said (at the end of a complete sentence, for example); <code>partial</code> refers to what is currently being said, and this part will be continuously loaded onto the screen.</p>
 </section>
 <section id="encoding-message-stream" class="level2">
 <h2 class="anchored" data-anchor-id="encoding-message-stream">Encoding Message Stream</h2>
-<p>Transcription messages are encoded in the following format: <code>(final_text + partial_text +\n)</code>, where \n refers to the new line character.</p>
+<p>Transcription messages are encoded in the following format:</p>
+<p><code>(final_text + partial_text +\n)</code>, where \n refers to the new line character.</p>
 <p>For example, the message “My name is Edwin. I love cats.” would be embedded as follows:</p>
 <p><code>(I am Edwin\nI love cats)</code>.</p>
 <p>The message is then encoded in <code>utf-8</code> and sent to the Arduino for decoding. Note that the latest 4 sentences are continuously sent over.</p>
@@ -308,7 +309,8 @@ cookieconsent.run({
 </section>
 <section id="live-output" class="level2">
 <h2 class="anchored" data-anchor-id="live-output">Live Output</h2>
-<p>This part of the project is also fairly simple. After the message has been parsed, the output is sent to the SSD1306. The display has color inverting capabilities, allowing for visual accessibility and readability.</p>
+<p>This part of the project is also fairly simple. After the message has been parsed, the output is sent to the SSD1306.</p>
+<p>One can also invert the color display, allowing for visual accessibility and readability.</p>
 </section>
 </section>
 <section id="next-steps" class="level1">

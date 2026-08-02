@@ -277,14 +277,14 @@
     "href": "posts/Sophmore Year/Transcription_Device.html#vosk-neural-network",
     "title": "Building a Live Transcription Device",
     "section": "Vosk Neural Network",
-    "text": "Vosk Neural Network\nThe Vosk Neural Network for this project is the “small” model with an error rate of 9.85 on the LibriSpeech data set. I decided to use it due to its offline and lightweight build. The sample rate chosen will be automatically downsampled to 16 kHZ, since Vosk operates at that rate.\nVosk is loaded onto a Raspberry Pi and the audio stream is passed into it for recognition. The recognition has two parts: final and partial results. final refers to the transcription when the neural network has a guess at what has been said (at the end of a sentence, for example); partial refers to what is currently being said."
+    "text": "Vosk Neural Network\nThe Vosk Neural Network for this project is the “small” model with an error rate of 9.85 on the LibriSpeech data set. I decided to use it due to its offline and lightweight build. The sample rate chosen will be automatically downsampled to 16 kHZ, since Vosk operates at that rate.\nVosk is loaded onto a Raspberry Pi and the audio stream is passed into it for recognition. The recognition has two parts: final and partial results. final refers to the transcription when the neural network has a guess at what has been said (at the end of a complete sentence, for example); partial refers to what is currently being said, and this part will be continuously loaded onto the screen."
   },
   {
     "objectID": "posts/Sophmore Year/Transcription_Device.html#encoding-message-stream",
     "href": "posts/Sophmore Year/Transcription_Device.html#encoding-message-stream",
     "title": "Building a Live Transcription Device",
     "section": "Encoding Message Stream",
-    "text": "Encoding Message Stream\nTranscription messages are encoded in the following format: (final_text + partial_text +\\n), where \\n refers to the new line character.\nFor example, the message “My name is Edwin. I love cats.” would be embedded as follows:\n(I am Edwin\\nI love cats).\nThe message is then encoded in utf-8 and sent to the Arduino for decoding. Note that the latest 4 sentences are continuously sent over."
+    "text": "Encoding Message Stream\nTranscription messages are encoded in the following format:\n(final_text + partial_text +\\n), where \\n refers to the new line character.\nFor example, the message “My name is Edwin. I love cats.” would be embedded as follows:\n(I am Edwin\\nI love cats).\nThe message is then encoded in utf-8 and sent to the Arduino for decoding. Note that the latest 4 sentences are continuously sent over."
   },
   {
     "objectID": "posts/Sophmore Year/Transcription_Device.html#decoding-stream",
@@ -298,6 +298,6 @@
     "href": "posts/Sophmore Year/Transcription_Device.html#live-output",
     "title": "Building a Live Transcription Device",
     "section": "Live Output",
-    "text": "Live Output\nThis part of the project is also fairly simple. After the message has been parsed, the output is sent to the SSD1306. The display has color inverting capabilities, allowing for visual accessibility and readability."
+    "text": "Live Output\nThis part of the project is also fairly simple. After the message has been parsed, the output is sent to the SSD1306.\nOne can also invert the color display, allowing for visual accessibility and readability."
   }
 ]
