@@ -2,7 +2,7 @@
 title: "Building a Live Transcription Device"
 author: "Edwin Kodji"
 date: "2026-7-28"
-date-modified: "2026-7-30"
+date-modified: "2026-8-2"
 categories: [Projects, Fun]
 image: "ARTT.jpg"
 ---
@@ -32,11 +32,13 @@ This part is relatively simple. The script simply takes audio through a micropho
 
 The Vosk Neural Network for this project is the "small" model with an error rate of 9.85 on the LibriSpeech data set. I decided to use it due to its offline and lightweight build. The sample rate chosen will be automatically downsampled to 16 kHZ, since Vosk operates at that rate.
 
-Vosk is loaded onto a Raspberry Pi and the audio stream is passed into it for recognition. The recognition has two parts: `final` and `partial` results. `final` refers to the transcription when the neural network has a guess at what has been said (at the end of a sentence, for example); `partial` refers to what is currently being said.
+Vosk is loaded onto a Raspberry Pi and the audio stream is passed into it for recognition. The recognition has two parts: `final` and `partial` results. `final` refers to the transcription when the neural network has a guess at what has been said (at the end of a complete sentence, for example); `partial` refers to what is currently being said, and this part will be continuously loaded onto the screen. 
 
 ## Encoding Message Stream
 
-Transcription messages are encoded in the following format: `(final_text + partial_text +\n)`, where \\n refers to the new line character.
+Transcription messages are encoded in the following format: 
+
+`(final_text + partial_text +\n)`, where \\n refers to the new line character.
 
 For example, the message "My name is Edwin. I love cats." would be embedded as follows:
 
@@ -79,7 +81,9 @@ while (Serial.available() && !newDataReady){
 
 ## Live Output
 
-This part of the project is also fairly simple. After the message has been parsed, the output is sent to the SSD1306. The display has color inverting capabilities, allowing for visual accessibility and readability. 
+This part of the project is also fairly simple. After the message has been parsed, the output is sent to the SSD1306. 
+
+One can also invert the color display, allowing for visual accessibility and readability. 
 
 # Next Steps
 
